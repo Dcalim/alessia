@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Very Important Question 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="hearts" aria-hidden="true"></div>
+
+  <main class="card">
+    <!-- Step 1: The question -->
+    <section class="step active" id="step-ask">
+      <div class="emoji-big">🥺</div>
+      <h1>Alessia, will you go on a date with me?</h1>
+      <div class="ask-buttons">
+        <button class="btn btn-yes" id="yes-btn">Yes 💖</button>
+        <button class="btn btn-no" id="no-btn">No</button>
+      </div>
+    </section>
+
+    <!-- Step 2: Pick a date -->
+    <section class="step" id="step-date">
+      <div class="emoji-big">🥰</div>
+      <h1>Yay!! Pick a day</h1>
+      <p class="subtitle">Which day works best for you?</p>
+      <div class="date-grid" id="date-grid"></div>
+      <div class="nav-row">
+        <button class="btn btn-ghost" id="date-back">← Back</button>
+        <button class="btn btn-primary" id="date-next" disabled>Next →</button>
+      </div>
+    </section>
+
+    <!-- Step 3: Pick a cuisine -->
+    <section class="step" id="step-food">
+      <div class="emoji-big">😋</div>
+      <h1>What are we eating?</h1>
+      <p class="subtitle">Pick whatever you're craving</p>
+      <div class="food-grid" id="food-grid"></div>
+      <input
+        type="text"
+        id="other-input"
+        class="other-input hidden"
+        placeholder="Type what you're craving..."
+        maxlength="60"
+      />
+      <div class="nav-row">
+        <button class="btn btn-ghost" id="food-back">← Back</button>
+        <button class="btn btn-primary" id="food-next" disabled>Confirm 💕</button>
+      </div>
+    </section>
+
+    <!-- Step 4: Summary -->
+    <section class="step" id="step-done">
+      <div class="emoji-big">🎉</div>
+      <h1>It's a date!</h1>
+      <div class="summary">
+        <div class="summary-row">
+          <span class="summary-label">📅 When</span>
+          <span class="summary-value" id="summary-date"></span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">🍽️ Food</span>
+          <span class="summary-value" id="summary-food"></span>
+        </div>
+      </div>
+      <p class="subtitle" id="send-status"></p>
+      <button class="btn btn-ghost" id="done-back">← Change answers</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

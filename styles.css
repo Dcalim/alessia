@@ -1,0 +1,320 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --pink: #ff4d8d;
+  --pink-dark: #e63977;
+  --pink-light: #ffe0ec;
+  --text: #4a2c3a;
+  --muted: #9b7486;
+}
+
+body {
+  font-family: "Poppins", system-ui, sans-serif;
+  font-weight: 600;
+  color: var(--text);
+  background: linear-gradient(135deg, #ffd6e7 0%, #ffeef5 50%, #ffd9d0 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* Floating hearts background */
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  bottom: -40px;
+  font-size: 20px;
+  opacity: 0.6;
+  animation: float-up linear forwards;
+}
+
+@keyframes float-up {
+  to {
+    transform: translateY(-110vh) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+/* Card */
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 28px;
+  padding: 40px 32px;
+  box-shadow: 0 20px 60px rgba(230, 57, 119, 0.25);
+  text-align: center;
+}
+
+.step {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.step.active {
+  display: flex;
+  animation: pop-in 0.45s ease;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.emoji-big {
+  font-size: 64px;
+  line-height: 1;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--pink-dark);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+/* Buttons */
+.btn {
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 32px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary,
+.btn-yes {
+  background: var(--pink);
+  color: white;
+  box-shadow: 0 6px 18px rgba(255, 77, 141, 0.4);
+}
+
+.btn-primary:hover:not(:disabled),
+.btn-yes:hover {
+  background: var(--pink-dark);
+}
+
+.btn-no {
+  background: #eee;
+  color: #777;
+}
+
+.btn-no.runaway {
+  position: fixed;
+  z-index: 10;
+  transition: left 0.25s ease, top 0.25s ease;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  box-shadow: none;
+}
+
+.btn-ghost:hover {
+  color: var(--pink-dark);
+}
+
+.ask-buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+  margin-top: 8px;
+}
+
+.btn-yes {
+  transition: transform 0.25s ease, background 0.2s ease;
+}
+
+/* Date & food options */
+.date-grid,
+.food-grid {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+}
+
+.date-grid {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.food-grid {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+.option {
+  font-family: inherit;
+  background: white;
+  border: 2px solid var(--pink-light);
+  border-radius: 18px;
+  padding: 14px 8px;
+  cursor: pointer;
+  color: var(--text);
+  transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.option:hover {
+  transform: translateY(-2px);
+  border-color: var(--pink);
+}
+
+.option.selected {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: white;
+  box-shadow: 0 6px 18px rgba(255, 77, 141, 0.35);
+}
+
+.option .weekday {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+.option .day-num {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.option .month {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.option .food-emoji {
+  font-size: 1.8rem;
+}
+
+.option .food-name {
+  font-weight: 700;
+}
+
+.other-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.05rem;
+  padding: 14px 18px;
+  border: 2px solid var(--pink);
+  border-radius: 16px;
+  outline: none;
+  color: var(--text);
+}
+
+.other-input:focus {
+  box-shadow: 0 0 0 4px var(--pink-light);
+}
+
+.hidden {
+  display: none;
+}
+
+.nav-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+}
+
+/* Summary */
+.summary {
+  width: 100%;
+  background: var(--pink-light);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.1rem;
+}
+
+.summary-label {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.summary-value {
+  font-weight: 800;
+  color: var(--pink-dark);
+  text-align: right;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 32px 20px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .option .day-num {
+    font-size: 1.4rem;
+  }
+
+  .option .weekday,
+  .option .month {
+    font-size: 0.75rem;
+  }
+}
